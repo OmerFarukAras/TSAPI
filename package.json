@@ -1,0 +1,33 @@
+{
+    "name": "tsapi",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev:build": "tsc --project tsconfig.json",
+        "dev:start": "node dist/main.js",
+        "dev": "npm run dev:build && npm run dev:start"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@types/express": "^4.17.16",
+        "@types/express-handlebars": "^6.0.0",
+        "@types/handlebars": "^4.1.0",
+        "@types/node": "^18.11.18",
+        "express": "^4.18.2",
+        "express-handlebars": "^6.0.7",
+        "fs-extra": "^11.1.0",
+        "glob": "^8.1.0",
+        "handlebars": "^4.7.7",
+        "ng2-logger": "^13.1.9",
+        "perf_hooks": "^0.0.1",
+        "tslib": "^2.5.0",
+        "typescript": "^4.9.4"
+    },
+    "devDependencies": {
+        "@types/fs-extra": "^11.0.1",
+        "@types/glob": "^8.0.1"
+    }
+}
