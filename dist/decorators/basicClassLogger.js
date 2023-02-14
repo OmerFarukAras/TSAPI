@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = (_target, _propertyKey, descriptor) => {
+function measure(_target, _propertyKey, descriptor) {
     const originalMethod = descriptor.value;
     descriptor.value = function (...args) {
         let log = this.log;
@@ -12,4 +12,6 @@ exports.default = (_target, _propertyKey, descriptor) => {
         log.data(`$Method $${originalMethod.name}, OUT`);
         return result;
     };
-};
+}
+exports.default = measure;
+;

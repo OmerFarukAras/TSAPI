@@ -5,7 +5,7 @@ import { Logger } from "ng2-logger";
 import loadRoutes from "./load.routes";
 import { engine } from 'express-handlebars';
 import { extendedResponse } from '../middlewares/express-extended-response'
-
+import cookieParser from "cookie-parser"
 
 export default class loadApp {
     app: express.Application
@@ -20,7 +20,7 @@ export default class loadApp {
 
     @measure
     loadApp(app = this.app, log = this.log) {
-        app.listen(this, () => {
+        app.listen(this.port, () => {
             log.info(`App listening on port ${this.port}`)
         })
 
@@ -42,6 +42,7 @@ export default class loadApp {
     loadSettings(app = this.app, log = this.log) {
         app.use(express.json())
         app.use(express.urlencoded({ extended: true }))
+        app.use(cookieParser());
         app.use('/static', express.static(process.cwd() + "/public"))
         app.engine('handlebars', engine());
         app.set('view engine', 'handlebars');

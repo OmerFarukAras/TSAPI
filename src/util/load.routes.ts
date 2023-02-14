@@ -40,7 +40,7 @@ class loadRoutes {
   }
 
   @measure
-  private async loadRoute(x: string) {
+  private async loadRoute(x: string ) {
     let file = await import(x);
     let route = new file.default(this.log);
     let paths = x.replace(this.routesDir + "/", "").split("/");

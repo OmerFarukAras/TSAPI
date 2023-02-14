@@ -17,6 +17,7 @@ const basicClassLogger_1 = __importDefault(require("../decorators/basicClassLogg
 const load_routes_1 = __importDefault(require("./load.routes"));
 const express_handlebars_1 = require("express-handlebars");
 const express_extended_response_1 = require("../middlewares/express-extended-response");
+const cookie_parser_1 = __importDefault(require("cookie-parser"));
 class loadApp {
     app;
     log;
@@ -28,7 +29,7 @@ class loadApp {
         this.port = options.port;
     }
     loadApp(app = this.app, log = this.log) {
-        app.listen(this, () => {
+        app.listen(this.port, () => {
             log.info(`App listening on port ${this.port}`);
         });
         return this;
@@ -45,6 +46,7 @@ class loadApp {
     loadSettings(app = this.app, log = this.log) {
         app.use(express_1.default.json());
         app.use(express_1.default.urlencoded({ extended: true }));
+        app.use((0, cookie_parser_1.default)());
         app.use('/static', express_1.default.static(process.cwd() + "/public"));
         app.engine('handlebars', (0, express_handlebars_1.engine)());
         app.set('view engine', 'handlebars');

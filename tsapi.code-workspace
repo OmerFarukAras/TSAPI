@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "views"
+		},
+		{
+			"path": "src/routes"
+		},
+		{
+			"path": "public"
+		}
+	],
+	"settings": {}
+}
