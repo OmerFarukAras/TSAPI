@@ -13,10 +13,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const basicClassLogger_1 = __importDefault(require("../decorators/basicClassLogger"));
+const basicClassLogger_1 = __importDefault(require("../decorator/basicClassLogger"));
 const load_routes_1 = __importDefault(require("./load.routes"));
 const express_handlebars_1 = require("express-handlebars");
-const express_extended_response_1 = require("../middlewares/express-extended-response");
+const express_extended_response_1 = require("../middleware/express-extended-response");
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 class loadApp {
     app;

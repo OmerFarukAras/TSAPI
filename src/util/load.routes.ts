@@ -1,6 +1,6 @@
 import { Logger } from "ng2-logger";
-import measure from "../decorators/basicClassLogger";
-import { IRouterOptions } from "../interfaces/router.interface";
+import measure from "../decorator/basicClassLogger";
+import { IRouterOptions } from "../interface/router.interface";
 import fs from "fs-extra";
 import { Application } from "express";
 

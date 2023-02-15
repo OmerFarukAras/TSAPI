@@ -1,4 +1,4 @@
-import { IRouteOptions } from "../interfaces/router.interface";
+import { IRouteOptions } from "../interface/router.interface";
 import { Router, IRouter } from "express";
 
 export default class routerClass {

@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
-const basicClassLogger_1 = __importDefault(require("../decorators/basicClassLogger"));
+const basicClassLogger_1 = __importDefault(require("../decorator/basicClassLogger"));
 class loadDatabase {
     url;
     log;

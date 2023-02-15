@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { Logger } from "ng2-logger";
-import measure from "../decorators/basicClassLogger";
-import { IDatabaseLoadOptions } from "../interfaces/db.interface";
+import measure from "../decorator/basicClassLogger";
+import { IDatabaseLoadOptions } from "../interface/db.interface";
 
 export default class loadDatabase {
     url: string; //
