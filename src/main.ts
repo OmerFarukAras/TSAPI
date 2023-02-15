@@ -18,6 +18,5 @@ client
   .loadSettings()
   .loadRoutes()
 
-
 const app = client.getApp()
 app.set('QXC', database.trusted)
