@@ -1,5 +1,5 @@
 {
   "JWT_SECRET_KEY": "ELIXXRADES___ELXXRADESSw",
-  "MONGO_URL": "",
+  "MONGO_URL": "mongodb+srv://elixxrade:elixxrade@cluster0.tbam6.mongodb.net/uwu?retryWrites=true&w=majority",
   "EXPRESS_PORT": "3000"
 }

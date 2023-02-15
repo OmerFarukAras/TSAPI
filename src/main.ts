@@ -1,14 +1,15 @@
-import loadApp from "./util/load.app";
-import loadDatabase from "./util/load.database";
+import config from "config";
+import App from "./util/load.app";
+import Database from "./util/load.database";
 import log from "./util/logger";
 
-const client = new loadApp({
+const client = new App({
   port: 3000,
   log: log,
 })
 
-const database = new loadDatabase({
-  url: 'mongodb+srv://elixxrade:elixxrade@cluster0.tbam6.mongodb.net/uwu?retryWrites=true&w=majority',
+const database = new Database({
+  url: config.get("MONGO_URL"),
   log: log
 }).loadDatabase()
 
