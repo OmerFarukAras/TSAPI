@@ -1,5 +1,5 @@
 import { Logger } from "ng2-logger";
-import routerClass from "../../../class/routerClass.class";
+import routerClass from "@/class/routerClass.class";
 import { IRouter } from "express";
 
 export default class main_route extends routerClass {

@@ -1,10 +1,10 @@
 import express from "express";
-import { IAppLoadSettings } from "../interface/app.interface";
-import measure from "../decorator/basicClassLogger";
+import { IAppLoadSettings } from "@/interface/app.interface";
+import measure from "@/decorator/basicClassLogger";
 import { Logger } from "ng2-logger";
-import loadRoutes from "./load.routes";
+import loadRoutes from "@/util/load.routes";
 import { engine } from 'express-handlebars';
-import { extendedResponse } from '../middleware/express-extended-response'
+import { extendedResponse } from '@/middleware/express-extended-response'
 import cookieParser from "cookie-parser"
 
 export default class loadApp {

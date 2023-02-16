@@ -1,8 +1,8 @@
 import { IRouter } from "express";
 import { Logger } from "ng2-logger";
-import routerClass from "../../class/routerClass.class";
-//import { getUserDetails, LoginUser, LogoutUser, RegisterUser } from "../../controllers/auth.controller";
-//import auth from "../../middlewares/auth.middleware";
+
+import routerClass from "@/class/routerClass.class";
+import { CLogin, CLogout, CRegister, CAuth } from "@/controller/auth.controller";
 
 export default class main_route extends routerClass {
     constructor(log: Logger) {
@@ -13,10 +13,15 @@ export default class main_route extends routerClass {
     }
 
     run(router = this.router as IRouter) {
-        //router.post("/register", RegisterUser);
-        //router.post("/login", LoginUser);
-        //router.get("/", auth, getUserDetails);
-        //router.get("/logout", auth, LogoutUser);
+        router.post("/register", CRegister);
+        router.post("/login", CLogin);
+
+        router.get("/", CAuth, (req :IRequestWithBody, res) => {
+        
+            res.send(req.user.name)
+        });
+        
+        router.get("/logout", CAuth, CLogout);
         return router
     }
 }

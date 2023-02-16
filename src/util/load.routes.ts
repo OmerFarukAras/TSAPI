@@ -1,6 +1,8 @@
 import { Logger } from "ng2-logger";
-import measure from "../decorator/basicClassLogger";
-import { IRouterOptions } from "../interface/router.interface";
+
+import measure from "@/decorator/basicClassLogger";
+import { IRouterOptions } from "@/interface/router.interface";
+
 import fs from "fs-extra";
 import { Application } from "express";
 
@@ -19,6 +21,7 @@ class loadRoutes {
     this.routes = [];
     this.files = [];
   }
+
   @measure
   load() {
     this.log.info("Loading routes!");

@@ -1,7 +1,11 @@
+import 'module-alias/register';
+import "dotenv"
+
 import config from "config";
-import App from "./util/load.app";
-import Database from "./util/load.database";
-import log from "./util/logger";
+
+import App from "@/util/load.app";
+import Database from "@/util/load.database";
+import log from "@/util/logger";
 
 const client = new App({
   port: 3000,
@@ -19,4 +23,4 @@ client
   .loadRoutes()
 
 const app = client.getApp()
-app.set('QXC', database.trusted)
+app.set('JWT_SECRET', database.trusted)

@@ -3,10 +3,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+require("module-alias/register");
+require("dotenv");
 const config_1 = __importDefault(require("config"));
-const load_app_1 = __importDefault(require("./util/load.app"));
-const load_database_1 = __importDefault(require("./util/load.database"));
-const logger_1 = __importDefault(require("./util/logger"));
+const load_app_1 = __importDefault(require("@/util/load.app"));
+const load_database_1 = __importDefault(require("@/util/load.database"));
+const logger_1 = __importDefault(require("@/util/logger"));
 const client = new load_app_1.default({
     port: 3000,
     log: logger_1.default,
@@ -20,4 +22,4 @@ client
     .loadSettings()
     .loadRoutes();
 const app = client.getApp();
-app.set('QXC', database.trusted);
+app.set('JWT_SECRET', database.trusted);

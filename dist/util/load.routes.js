@@ -35,7 +35,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const basicClassLogger_1 = __importDefault(require("../decorator/basicClassLogger"));
+const basicClassLogger_1 = __importDefault(require("@/decorator/basicClassLogger"));
 const fs_extra_1 = __importDefault(require("fs-extra"));
 class loadRoutes {
     log;

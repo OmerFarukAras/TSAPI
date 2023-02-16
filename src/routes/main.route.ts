@@ -1,6 +1,6 @@
 import { IRouter } from "express";
 import { Logger } from "ng2-logger";
-import routerClass from "../class/routerClass.class";
+import routerClass from "@/class/routerClass.class";
 //import auth from "../middlewares/isAuth.middleware";
 
 export default class main_route extends routerClass {
@@ -14,14 +14,6 @@ export default class main_route extends routerClass {
   run(router = this.router as IRouter) {
     router.get("/", (req, res) => {
       if (req) res.render("home")
-    })
-
-    /*router.get("/user", auth, (req: any, res) => {
-      if (req) res.send(req.user)
-    })*/
-
-    router.get("*", (_req, res) => {
-      res.redirect("/error/404")
     })
     return router
   }
