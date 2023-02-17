@@ -1,24 +1,24 @@
 {
 	"folders": [
 		{
-			"name": "src",
-			"path": "src"
-		},
-		{
-			"name": "didactic-octo-doodle",
+			"name": "TSAPI",
 			"path": "."
 		},
 		{
-			"name": "views",
-			"path": "views"
+			"name": "config",
+			"path": "config"
 		},
 		{
 			"name": "public",
 			"path": "public"
 		},
 		{
-			"name": "routes",
-			"path": "src/routes"
+			"name": "views",
+			"path": "views"
+		},
+		{
+			"name": "src",
+			"path": "src"
 		}
 	],
 	"settings": {}
