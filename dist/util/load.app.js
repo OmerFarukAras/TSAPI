@@ -15,9 +15,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const basicClassLogger_1 = __importDefault(require("@/decorator/basicClassLogger"));
 const load_routes_1 = __importDefault(require("@/util/load.routes"));
-const express_handlebars_1 = require("express-handlebars");
 const express_extended_response_1 = require("@/middleware/express-extended-response");
+const handlebars_1 = __importDefault(require("handlebars"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
+const express_handlebars_1 = require("express-handlebars");
+const allow_prototype_access_1 = require("@handlebars/allow-prototype-access");
 class loadApp {
     app;
     log;
@@ -48,7 +50,12 @@ class loadApp {
         app.use(express_1.default.urlencoded({ extended: true }));
         app.use((0, cookie_parser_1.default)());
         app.use('/static', express_1.default.static(process.cwd() + "/public"));
-        app.engine('handlebars', (0, express_handlebars_1.engine)());
+        app.engine('handlebars', (0, express_handlebars_1.engine)({
+            handlebars: (0, allow_prototype_access_1.allowInsecurePrototypeAccess)(handlebars_1.default),
+            layoutsDir: process.cwd() + "/views/layouts",
+            defaultLayout: 'main',
+            partialsDir: process.cwd() + "/views/partials"
+        }));
         app.set('view engine', 'handlebars');
         app.set('views', process.cwd() + "/views");
         app.use(express_extended_response_1.extendedResponse);

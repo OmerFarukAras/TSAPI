@@ -12,6 +12,7 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "@handlebars/allow-prototype-access": "^1.0.5",
         "@types/express-handlebars": "^6.0.0",
         "@types/handlebars": "^4.1.0",
         "@types/mongoose": "^5.11.97",

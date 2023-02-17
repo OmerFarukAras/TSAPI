@@ -3,10 +3,11 @@ import { IAppLoadSettings } from "@/interface/app.interface";
 import measure from "@/decorator/basicClassLogger";
 import { Logger } from "ng2-logger";
 import loadRoutes from "@/util/load.routes";
-import { engine } from 'express-handlebars';
 import { extendedResponse } from '@/middleware/express-extended-response'
+import Handlebars from "handlebars";
 import cookieParser from "cookie-parser"
-
+import { engine } from 'express-handlebars'
+import { allowInsecurePrototypeAccess } from "@handlebars/allow-prototype-access";
 export default class loadApp {
     app: express.Application
     log: Logger
@@ -44,7 +45,12 @@ export default class loadApp {
         app.use(express.urlencoded({ extended: true }))
         app.use(cookieParser());
         app.use('/static', express.static(process.cwd() + "/public"))
-        app.engine('handlebars', engine());
+        app.engine('handlebars', engine({
+            handlebars: allowInsecurePrototypeAccess(Handlebars),
+            layoutsDir: process.cwd() + "/views/layouts",
+            defaultLayout: 'main',
+            partialsDir: process.cwd() + "/views/partials"
+        }));
         app.set('view engine', 'handlebars');
         app.set('views', process.cwd() + "/views");
 

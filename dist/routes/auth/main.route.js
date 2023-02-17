@@ -15,7 +15,19 @@ class main_route extends routerClass_class_1.default {
     run(router = this.router) {
         router.post("/register", auth_controller_1.CRegister);
         router.post("/login", auth_controller_1.CLogin);
-        router.get("/", auth_controller_1.CAuth, (req, res) => {
+        router.get("/register", (_req, res) => {
+            res.render("auth/signup", {
+                layout: "auth",
+                title: "Register"
+            });
+        });
+        router.get("/login", (_req, res) => {
+            res.render("auth/signin", {
+                layout: "auth",
+                title: "Login"
+            });
+        });
+        router.get("/", auth_controller_1.CCAuth, (req, res) => {
             if (req.user)
                 res.send(req.user);
         });
