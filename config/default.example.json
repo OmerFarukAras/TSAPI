@@ -1,0 +1,6 @@
+{
+  "JWT_SECRET_KEY": "ELIXXRADES___ELXXRADESS",
+  "MONGO_URL": "your_mongo_url",
+  "EXPRESS_PORT": "3000",
+  "SALT": 10
+}

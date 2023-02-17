@@ -17,7 +17,7 @@ class main_route extends routerClass_class_1.default {
         router.post("/login", auth_controller_1.CLogin);
         router.get("/", auth_controller_1.CAuth, (req, res) => {
             if (req.user)
-                res.send(req.user.name);
+                res.send(req.user);
         });
         router.get("/logout", auth_controller_1.CAuth, auth_controller_1.CLogout);
         return router;

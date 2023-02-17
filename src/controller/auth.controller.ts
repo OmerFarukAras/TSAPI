@@ -54,7 +54,7 @@ export async function CLogin(req: Request, res: Response) {
 
 export async function CLogout(req: Request, res: Response) {
     User.findOneAndUpdate({ _id: req.user._id, token: req.user.token }, { token: null }).then(() => {
-        res.redirect("/")
+        res.redirect("/") // JWT is browser based, so we can't delete cookie
     }).catch(err => {
         res.status(401).send({
             message: err.message
@@ -67,10 +67,11 @@ export async function CAuth(req: Request, res: Response, next: NextFunction) {
         if (!req.headers.authorization) return res.redirect("/auth/login")
         let token = req.headers.authorization.split(" ")[1];
         let user = await User.findOne({ token: token })
+        if (!user) return res.redirect("/auth/login")
         let decodedToken = jwt.verify(token, config.get("JWT_SECRET_KEY") as string);
         if (user && decodedToken) {
             req.user = user;
-        }
+        } else CLogout(req, res) // if token is invalid, logout
         next()
     } catch (error) {
         res.status(401).send({

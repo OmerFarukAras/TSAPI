@@ -18,7 +18,7 @@ export default class main_route extends routerClass {
 
         router.get("/", CAuth, (req, res) => {
             if (req.user)
-                res.send(req.user.name)
+                res.send(req.user)
         });
 
         router.get("/logout",CAuth, CLogout);
