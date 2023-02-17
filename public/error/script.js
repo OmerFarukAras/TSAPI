@@ -1,4 +1,4 @@
-var $copyContainer = $(".copy-container"),
+/*var $copyContainer = $(".copy-container"),
   $replayIcon = $("#cb-replay"),
   $copyWidth = $(".copy-container").find("p").width();
 gsap.registerPlugin(SplitText);
@@ -54,3 +54,4 @@ $("#cb-replay").on("click", function () {
   splitTextTimeline.restart();
   handleTL.restart();
 });
+*/

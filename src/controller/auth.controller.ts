@@ -3,10 +3,12 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 import User from "@/model/user.model";
-import { IUser, IUserRequest } from "@/interface/user.interface";
+import { IUser } from "@/interface/user.interface";
 import { RegisterSchema, LoginSchema } from "@/controller/body.controller";
+
 import config from "config";
-import { NextFunction } from "express-serve-static-core";
+
+import { NextFunction } from "express";
 
 export function CRegister(req: Request, res: Response) {
     let { email, password, name } = req.body;
@@ -51,25 +53,28 @@ export async function CLogin(req: Request, res: Response) {
 }
 
 export async function CLogout(req: Request, res: Response) {
-    if (!req.headers.authorization) return res.redirect("/")
-    // let token = req.headers.authorization.split(" ")[1];
-
-    res.redirect("/")
+    User.findOneAndUpdate({ _id: req.user._id, token: req.user.token }, { token: null }).then(() => {
+        res.redirect("/")
+    }).catch(err => {
+        res.status(401).send({
+            message: err.message
+        });
+    })
 }
 
-export async function CAuth(req: IUserRequest, res: Response, next: NextFunction) {
+export async function CAuth(req: Request, res: Response, next: NextFunction) {
     try {
-        let user: IUser | null
         if (!req.headers.authorization) return res.redirect("/auth/login")
         let token = req.headers.authorization.split(" ")[1];
+        let user = await User.findOne({ token: token })
         let decodedToken = jwt.verify(token, config.get("JWT_SECRET_KEY") as string);
-        user = await User.findOne({ _id: decodedToken, token: token })
-        if (!user) return res.redirect("/auth/login")
-        req.user = user;
-        next();
+        if (user && decodedToken) {
+            req.user = user;
+        }
+        next()
     } catch (error) {
-        return res.status(401).send({
-            message: 'Auth failed'
+        res.status(401).send({
+            message: error
         });
     }
 }

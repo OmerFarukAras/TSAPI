@@ -52,7 +52,7 @@ userSchema.pre("save", function (next) {
 
 userSchema.methods.generateToken = function (callBack: Function) {
     var user = this;
-    var token = jwt.sign(user._id.toHexString(), config.get("JWT_SECRET_KEY"));
+    var token = jwt.sign({ id: user._id.toHexString() }, config.get("JWT_SECRET_KEY"), { expiresIn: '30s' });
     user.token = token;
     user.save(function (err: Error, user: IUser) {
         if (err) return callBack(err)

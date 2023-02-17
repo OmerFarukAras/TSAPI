@@ -1,4 +1,4 @@
-import { IRouter } from "express";
+import { IRouter} from "express";
 import { Logger } from "ng2-logger";
 
 import routerClass from "@/class/routerClass.class";
@@ -16,12 +16,12 @@ export default class main_route extends routerClass {
         router.post("/register", CRegister);
         router.post("/login", CLogin);
 
-        router.get("/", CAuth, (req :IRequestWithBody, res) => {
-        
-            res.send(req.user.name)
+        router.get("/", CAuth, (req, res) => {
+            if (req.user)
+                res.send(req.user.name)
         });
-        
-        router.get("/logout", CAuth, CLogout);
+
+        router.get("/logout",CAuth, CLogout);
         return router
     }
 }
