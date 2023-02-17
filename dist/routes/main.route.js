@@ -14,7 +14,6 @@ class main_route extends routerClass_class_1.default {
     }
     run(router = this.router) {
         router.get("/", auth_controller_1.CAuth, (req, res) => {
-            console.log(req.user);
             res.render("home", {
                 user: req.user
             });
