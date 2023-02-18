@@ -50,7 +50,7 @@ export async function CLogin(req: Request, res: Response) {
 
 export async function CLogout(req: Request, res: Response) {
     User.findOneAndUpdate({ _id: req.user._id, token: req.user.token }, { token: null }).then(() => {
-        res.cookie("x_auth", null).redirect("/")
+        res.clearCookie("x_auth").redirect("/")
     }).catch(err => {
         res.status(401).send({
             message: err.message

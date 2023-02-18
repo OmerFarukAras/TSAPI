@@ -1,0 +1,42 @@
+<div class="flex-auto p-6">
+  <form role="form" action="/post/create" method="POST">
+    <label class="mb-2 ml-1 font-bold text-xs text-slate-700">
+      Title
+    </label>
+    <div class="mb-4">
+      <input
+        type="text"
+        class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow"
+        placeholder="Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
+        id="title"
+        name="title"
+      />
+    </div>
+    <label class="mb-2 ml-1 font-bold text-xs text-slate-700">
+      Content
+    </label>
+    <div class="mb-4">
+      <textarea
+        class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow"
+        placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ipsum est, lacinia id iaculis at, commodo at nulla. Proin porta faucibus tortor, in luctus purus ornare vel. Curabitur cursus libero mauris, eget pretium libero ornare in. Sed non tincidunt ipsum. Suspendisse potenti. Phasellus id tincidunt eros. Aenean consequat eros at velit vestibulum consectetur vitae sit amet turpis. Fusce semper tellus ut lorem sollicitudin convallis."
+        id="content"
+        name="content"
+      ></textarea>
+    </div>
+
+    <div class="min-h-6 mb-0.5 block pl-12">
+      <label
+        class="mb-2 ml-1 font-normal cursor-pointer select-none text-sm text-slate-700"
+      >
+        {{errorMsg}}
+      </label>
+    </div>
+    <div class="text-center">
+      <button
+        class="inline-block w-full px-6 py-3 mt-6 mb-0 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer shadow-soft-md bg-x-25 bg-150 leading-pro text-xs ease-soft-in tracking-tight-soft bg-gradient-to-tl from-blue-600 to-cyan-400 hover:scale-102 hover:shadow-soft-xs active:opacity-85"
+      >
+        Create Post
+      </button>
+    </div>
+  </form>
+</div>
