@@ -33,7 +33,7 @@ export default class main_route extends routerClass {
             })
         })
 
-        router.get("/:id", CCAuth, readPost)
+        router.get("/:id", CAuth, readPost)
         return router
     }
 }
