@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
+import jwt, { JwtPayload } from "jsonwebtoken";
 
 import User from "@/model/user.model";
 import { IUser } from "@/interface/user.interface";
@@ -61,17 +61,17 @@ export async function CLogout(req: Request, res: Response) {
 export async function CAuth(req: Request, res: Response, next: NextFunction) {
     try {
         let token = req.cookies.x_auth;
-        let user = await User.findOne({ token: token })
-        if (!user) {
-            req.user = null
+        if (!token) return next()
+        let decodedToken = jwt.verify(token, config.get("JWT_SECRET_KEY") as string) as JwtPayload;
+        let user = await User.findOne({ token: token, _id: decodedToken._id })
+        if (user) {
+            req.user = user
             return next()
+        } else {
+            return next();
         }
-        let decodedToken = jwt.verify(token, config.get("JWT_SECRET_KEY") as string);
-        if (user && decodedToken) {
-            req.user = user;
-        } else CLogout(req, res) // if token is invalid, logout
-        next()
     } catch (error) {
+        console.log(error)
         res.status(401).send({
             message: error
         });
@@ -83,12 +83,13 @@ export async function CAuth(req: Request, res: Response, next: NextFunction) {
 export async function CCAuth(req: Request, res: Response, next: NextFunction) {
     try {
         let token = req.cookies.x_auth;
-        let user = await User.findOne({ token: token })
+        if (!token) return res.redirect("/auth/login")
+        let decodedToken = jwt.verify(token, config.get("JWT_SECRET_KEY") as string)
+        let user = await User.findOne({ token: token, _id: decodedToken })
         if (!user) return res.redirect("/auth/login")
-        let decodedToken = jwt.verify(token, config.get("JWT_SECRET_KEY") as string);
-        if (user && decodedToken) {
+        if (user) {
             req.user = user;
-        } else CLogout(req, res) // if token is invalid, logout
+        }
         next()
     } catch (error) {
         res.status(401).send({

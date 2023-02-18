@@ -26,9 +26,11 @@ export const LoginSchema = Joi.object({
 
 export const PostSchema = Joi.object({
     title: Joi.string()
-        .pattern(new RegExp('^[a-zA-Z0-9]{3,100}$')) //means 3 to 100 characters long and only alphanumeric characters are allowed.
+        .min(5)
+        .max(150)
         .required(),
     content: Joi.string()
-        .pattern(new RegExp('^[a-zA-Z0-9]{3,800}$')) //means 3 to 500 characters long and only alphanumeric characters are allowed.
+        .min(5)
+        .max(1000)
         .required(),
 })
