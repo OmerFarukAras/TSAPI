@@ -8,6 +8,8 @@ import Handlebars from "handlebars";
 import cookieParser from "cookie-parser"
 import { engine } from 'express-handlebars'
 import { allowInsecurePrototypeAccess } from "@handlebars/allow-prototype-access";
+import requestIp from 'request-ip';
+
 export default class loadApp {
     app: express.Application
     log: Logger
@@ -44,6 +46,8 @@ export default class loadApp {
         app.use(express.json())
         app.use(express.urlencoded({ extended: true }))
         app.use(cookieParser());
+        app.use(requestIp.mw())
+
         app.use('/static', express.static(process.cwd() + "/public"))
         app.engine('handlebars', engine({
             handlebars: allowInsecurePrototypeAccess(Handlebars),
@@ -55,6 +59,10 @@ export default class loadApp {
         app.set('views', process.cwd() + "/views");
 
         app.use(extendedResponse)
+        app.use((req, _res, next) => {
+            log.data("REQUEST", req.method + " " + req.url + " " + req.clientIp)
+            next()
+        })
         log.info(`Settings Loaded`)
         return this
     }

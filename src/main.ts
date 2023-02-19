@@ -7,6 +7,8 @@ import App from "@/util/load.app";
 import Database from "@/util/load.database";
 import log from "@/util/logger";
 
+import { Mailer } from './service/email.service';
+
 /*    
   * TODO: readme
 */
@@ -22,10 +24,15 @@ const database = new Database({
   log: log
 }).loadDatabase()
 
+new Mailer(config.get("EMAIL"), log, config.get("EMAIL_SEND_DEBUG"))
+
 client
   .loadApp()
   .loadSettings()
   .loadRoutes()
 
 const app = client.getApp()
+
+
+
 app.set('JWT_SECRET', database.trusted)

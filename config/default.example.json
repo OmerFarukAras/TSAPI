@@ -2,5 +2,15 @@
   "JWT_SECRET_KEY": "ELIXXRADES___ELXXRADESS",
   "MONGO_URL": "your_mongo_url",
   "EXPRESS_PORT": "3000",
-  "SALT": 10
+  "SALT": 10,
+  "EMAIL_SEND_DEBUG": true,
+  "EMAIL": {
+    "host": "host_email",
+    "port": 465,
+    "secure": true,
+    "auth": {
+      "user": "email_user",
+      "pass": "email_pass"
+    }
+  }
 }

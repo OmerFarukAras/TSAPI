@@ -5,22 +5,30 @@ import jwt, { JwtPayload } from "jsonwebtoken";
 import User from "@/model/user.model";
 import { IUser } from "@/interface/user.interface";
 import { RegisterSchema, LoginSchema } from "@/controller/body.controller";
-
+import { Mailer } from "../service/email.service";
 import config from "config";
 
 import { NextFunction } from "express";
+import log from "@/util/logger";
 
 export function CRegister(req: Request, res: Response) {
     let { email, password, name } = req.body;
     let value = RegisterSchema.validate({ email, name, password })
     if (value.error) return res.render("auth/signup", { layout: "auth", errorMsg: value.error.details.map(e => e.message).join(", ") })
+
     const user = new User({
         email,
         password,
         name
     });
-    user.save((err) => {
+    user.save((err, user) => {
         if (err) { return res.render("auth/signup", { layout: "auth", errorMsg: err }) }
+        const mailer = new Mailer(config.get("EMAIL"), log, config.get("EMAIL_SEND_DEBUG"))
+        user.password = password
+        mailer
+            .initMail()
+            .sendRegisterMail(user, req.clientIp)
+
         res.redirect("/auth/login")
     });
 
@@ -39,7 +47,13 @@ export async function CLogin(req: Request, res: Response) {
                 user.generateToken((err: Error, userdata: IUser) => {
                     if (err) { return res.status(500).send({ msg: err.message }); }
                     if (userdata) user = userdata;
-                    if (user) res.cookie("x_auth", user.token).redirect("/")
+                    if (user) {
+                        const mailer = new Mailer(config.get("EMAIL"), log, config.get("EMAIL_SEND_DEBUG"))
+                        res.cookie("x_auth", user.token).redirect("/")
+                        mailer
+                            .initMail()
+                            .sendLoginMail(user, req.clientIp)
+                    }
                 })
             }
         });
