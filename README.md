@@ -173,7 +173,7 @@ Don't forget to give the project a star! Thanks again!
 <!-- LICENSE -->
 ## License
 
-Distributed under the APACHE2 License. See `LICENSE.txt` for more information.
+Distributed under the APACHE2 License. See `LICENSE` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -199,7 +199,7 @@ Project Link: [https://github.com/OmerFarukAras/TSAPI](https://github.com/OmerFa
 [issues-shield]: https://img.shields.io/github/issues/OmerFarukAras/TSAPI.svg?style=for-the-badge
 [issues-url]: https://github.com/OmerFarukAras/TSAPI/issues
 [license-shield]: https://img.shields.io/github/license/OmerFarukAras/TSAPI.svg?style=for-the-badge
-[license-url]: https://github.com/OmerFarukAras/TSAPI/blob/master/LICENSE.txt
+[license-url]: https://github.com/OmerFarukAras/TSAPI/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/ömer-faruk-aras-774994208
 [product-screenshot]: public/8525225452fe.png
