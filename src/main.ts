@@ -13,7 +13,7 @@ import log from "@/util/logger";
 
 
 const client = new App({
-  port: 3000,
+  port: config.get("EXPRESS_PORT"),
   log: log,
 })
 
