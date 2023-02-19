@@ -25,11 +25,10 @@ export function CRegister(req: Request, res: Response) {
         if (err) { return res.render("auth/signup", { layout: "auth", errorMsg: err }) }
         const mailer = new Mailer(config.get("EMAIL"), log, config.get("EMAIL_SEND_DEBUG"))
         user.password = password
-        mailer
-            .initMail()
-            .sendRegisterMail(user, req.clientIp)
 
         res.redirect("/auth/login")
+        mailer
+            .sendRegisterMail(user, req.clientIp)
     });
 
 }
@@ -51,7 +50,6 @@ export async function CLogin(req: Request, res: Response) {
                         const mailer = new Mailer(config.get("EMAIL"), log, config.get("EMAIL_SEND_DEBUG"))
                         res.cookie("x_auth", user.token).redirect("/")
                         mailer
-                            .initMail()
                             .sendLoginMail(user, req.clientIp)
                     }
                 })

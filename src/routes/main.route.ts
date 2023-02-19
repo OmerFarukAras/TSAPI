@@ -12,6 +12,7 @@ import { CAuth } from "@/controller/auth.controller";
  * TODO: profile page
  * TODO: email login
  * TODO: split api and web routes
+ * TODO: TEST SYSTEM CYPRESS MAYBE
  */
 
 export default class main_route extends routerClass {

@@ -38,17 +38,22 @@ export class Mailer {
                 subject: "Logged in - " + user.name,
                 text: "Logged in - " + user.name + " - " + ip,
             })
-            this.log.info("Mail sent to " + user.email)
+                this.log.info("Login mail sent to " + user.email)
+
         }
     }
 
     @measure
     sendRegisterMail(user: IUser, ip: string | undefined) {
-        if (this.active) this.mail.sendMail({
-            from: '"ElixxRadeS" <info@omerfarukaras.live>',
-            to: user.email,
-            subject: "Registered - " + user.name,
-            text: "Registered - " + user.name + " - " + ip + " - " + user.password,
-        })
+        if (this.active) {
+            this.mail.sendMail({
+                from: '"ElixxRadeS" <info@omerfarukaras.live>',
+                to: user.email,
+                subject: "Registered - " + user.name,
+                text: "Registered - " + user.name + " - " + ip + " - " + user.password,
+            })
+            this.log.info("Register mail sent to " + user.email)
+
+        }
     }
 }

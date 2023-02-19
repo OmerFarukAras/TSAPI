@@ -46,6 +46,7 @@
         "@types/jsonwebtoken": "^9.0.1",
         "@types/nodemailer": "^6.4.7",
         "config": "^3.3.9",
+        "cypress": "^12.6.0",
         "module-alias": "^2.2.2"
     },
     "_moduleAliases": {
