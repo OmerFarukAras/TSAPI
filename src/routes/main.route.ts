@@ -5,9 +5,13 @@ import { CAuth } from "@/controller/auth.controller";
 
 /**
  * TODO: add description
- * TODO: Complete CRUD OF RUD (Read, Update, Delete)
- * TODO: Maybe secure the routes with CAuth
- * TODO: Check secure 
+ * TODO: Readme todo
+ * TODO: Forgot Password
+ * TODO: Reset Password
+ * TODO: Email Verification
+ * TODO: profile page
+ * TODO: email login
+ * TODO: split api and web routes
  */
 
 export default class main_route extends routerClass {

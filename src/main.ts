@@ -9,11 +9,6 @@ import log from "@/util/logger";
 
 import { Mailer } from './service/email.service';
 
-/*    
-  * TODO: readme
-*/
-
-
 const client = new App({
   port: config.get("EXPRESS_PORT"),
   log: log,

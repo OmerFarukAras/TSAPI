@@ -141,10 +141,11 @@ _[Documentation](https://example.com) soon..._
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Email service.
+- [ ] ~~Email service~~.
 - [ ] API Without pages.
+- [ ] profile page.
+- [ ] email login.
 - [ ] Forgot password.
-    - [ ] Nested Feature
 
 See the [open issues](https://github.com/OmerFarukAras/TSAPI/issues) for a full list of proposed features (and known issues).
 
